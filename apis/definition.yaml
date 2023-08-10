@@ -85,6 +85,7 @@ spec:
                               version:
                                 type: string
                                 description: Prometheus operator version to run.
+                                default: "2.9.2"
                 required:
                 - nodes
                 - id

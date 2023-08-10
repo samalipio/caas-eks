@@ -21,6 +21,8 @@ spec:
             namespace: flux-system
             chart:
               name: flux2
+              url: https://github.com/fluxcd-community/helm-charts/releases/download/flux2-2.9.2/flux2-2.9.2.tgz
+              version: 2.9.2
             values:
               imageAutomationController:
                 create: false
