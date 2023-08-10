@@ -1,16 +1,28 @@
 apiVersion: meta.pkg.crossplane.io/v1
 kind: Configuration
 metadata:
-  name: configuration-scratch
+  name: configuration-caas-eks
   annotations:
-    meta.crossplane.io/maintainer: The Getting Started Organization <support@starter.org>
-    meta.crossplane.io/source: github.com/upbound/configuration-scratch
+    meta.crossplane.io/maintainer: The Getting Started Cluster-as-a-Service Configuration
+    meta.crossplane.io/source: github.com/upbound/caas-eks
     meta.crossplane.io/license: Apache-2.0
     meta.crossplane.io/description: |
-      This starter configuration is completely empty.
+      This Cluster-as-a-Service configuration offers Kubernetes Clusters backed by EKS.
     meta.crossplane.io/readme: |
-      This starter configuration is completely empty, allowing you to start
-      entirely from scratch.
+      This Configuration bundles an Upbound Cloud extension and an API
+      definition. The API will allow control planes to provision fully
+      configured Amazon Elastic Kubernetes Service (EKS) clusters, composed
+      using cloud service primitives from the [Upbound Official AWS
+      Provider](https://marketplace.upbound.io/providers/upbound/provider-aws).
 spec:
   crossplane:
-    version: ">=v1.7.0-0"
+    version: ">=v1.12.1-0"
+  dependsOn:
+    - provider: xpkg.upbound.io/crossplane-contrib/provider-helm
+      version: ">=v0.15.0"
+    - provider: xpkg.upbound.io/upbound/provider-aws-ec2
+      version: ">=v0.38.0"
+    - provider: xpkg.upbound.io/upbound/provider-aws-eks
+      version: ">=v0.38.0"
+    - provider: xpkg.upbound.io/upbound/provider-aws-iam
+      version: ">=v0.38.0"
